@@ -1,11 +1,15 @@
 package backend;
 
+
 public class Tester {
     public static void main(String[] args) {
-        Stock apple = new Stock("AAPL");
-        System.out.println(apple.getRegularMarketPrice());
-
-        Stock microsoft = new Stock("MSFT");
-        System.out.println(microsoft.getRegularMarketPrice());
+        Stock msft = new Stock("MSFT");
+        System.out.println(msft.getChartList().getDate());
+        System.out.println(msft.getChartList().getOpen());
+        System.out.println(msft.getChartList().getHigh());
+        System.out.println(msft.getChartList().getLow());
+        System.out.println(msft.getChartList().getClose());
+        System.out.println(msft.getChartList().getVolume());
+        System.out.println(msft.getChartList().getAdjclose());
     }
 }

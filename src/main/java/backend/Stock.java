@@ -5,11 +5,13 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 
 public class Stock {
-    String symbol;
-    HttpResponse<JsonNode> response = null;
+    private String symbol;
+    private HttpResponse<JsonNode> response = null;
+    private ChartList chart_data;
 
     public Stock(String symbol) {
         this.symbol = symbol;
+        this.chart_data = new ChartList(symbol);
     }
 
     public String getRegularMarketPrice()  {
@@ -66,6 +68,10 @@ public class Stock {
                 .getAsJsonArray("result");
 
         return results.get(0).getAsJsonObject().get("trailingPE").getAsString();
+    }
+
+    public ChartList getChartList() {
+        return chart_data;
     }
 
 
