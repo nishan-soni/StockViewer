@@ -1,4 +1,4 @@
-package backend;
+package stockdata;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
