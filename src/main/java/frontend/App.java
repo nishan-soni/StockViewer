@@ -1,13 +1,13 @@
 package frontend;
 
 
-import stockdata.ConvertJsonArray;
-import stockdata.Stock;
-import tech.tablesaw.api.DoubleColumn;
-import tech.tablesaw.api.StringColumn;
-import tech.tablesaw.api.Table;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import stockdata.*;
 
-import java.util.ArrayList;
+import javax.swing.*;
+
+
 
 
 public class App {
@@ -15,14 +15,26 @@ public class App {
 
         Stock MSFT = new Stock("MSFT");
 
-        Table stock_table = Table.create("MSFT Chart");
-        stock_table.addColumns(
-                StringColumn.create("Date", ConvertJsonArray.convertString(MSFT.getChartList().getDate())),
-                DoubleColumn.create("Open", ConvertJsonArray.convertDouble(MSFT.getChartList().getOpen())),
-                DoubleColumn.create("High", ConvertJsonArray.convertDouble(MSFT.getChartList().getHigh())),
-                DoubleColumn.create("Low", ConvertJsonArray.convertDouble(MSFT.getChartList().getLow())),
-                DoubleColumn.create("Close", ConvertJsonArray.convertDouble(MSFT.getChartList().getClose()))
-        );
+        final JFreeChart chart = CreateTimeSeries.create(MSFT);
+        final ChartPanel chartPanel = new ChartPanel( chart );
+        chartPanel.setPreferredSize( new java.awt.Dimension( 200 , 200 ) );
+        chartPanel.setMouseZoomable( true , false );
+        JFrame hi = new JFrame();
+        hi.setSize(400, 400);
+        hi.add(chartPanel);
+        hi.setVisible(true);
+        hi.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+
+
+
+
+
+
+
+
+
 
 
 

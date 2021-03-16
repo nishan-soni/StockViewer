@@ -14,6 +14,10 @@ public class Stock {
         this.chart_data = new ChartList(symbol);
     }
 
+    public String getSymbol() {
+        return symbol;
+    }
+
     public String getRegularMarketPrice()  {
         JsonArray results = Responses.quoteResponse(symbol)
                 .getAsJsonObject("quoteResponse")
