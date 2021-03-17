@@ -1,6 +1,7 @@
 package stockdata;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import java.text.SimpleDateFormat;
@@ -17,13 +18,14 @@ public class ChartList {
 
 
     public ChartList(String symbol) {
-        JsonArray quote = Responses.chartResponse(symbol)
+        JsonObject chartResponse = Responses.chartResponse(symbol);
+        JsonArray quote = chartResponse
                 .getAsJsonObject("chart")
                 .getAsJsonArray("result")
                 .get(0).getAsJsonObject().getAsJsonObject("indicators")
                 .getAsJsonArray("quote");
 
-        this.date = Responses.chartResponse(symbol)
+        this.date = chartResponse
                 .getAsJsonObject("chart")
                 .getAsJsonArray("result")
                 .get(0).getAsJsonObject().getAsJsonArray("timestamp");
@@ -39,7 +41,7 @@ public class ChartList {
         this.low = quote.get(0).getAsJsonObject().getAsJsonArray("low");
         this.close = quote.get(0).getAsJsonObject().getAsJsonArray("close");
         this.volume = quote.get(0).getAsJsonObject().getAsJsonArray("volume");
-        this.adjclose = Responses.chartResponse(symbol)
+        this.adjclose = chartResponse
                 .getAsJsonObject("chart")
                 .getAsJsonArray("result")
                 .get(0).getAsJsonObject().getAsJsonObject("indicators")

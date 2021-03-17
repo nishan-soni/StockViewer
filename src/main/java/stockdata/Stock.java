@@ -1,17 +1,16 @@
 package stockdata;
 
 import com.google.gson.*;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
 
 public class Stock {
-    private String symbol;
-    private HttpResponse<JsonNode> response = null;
-    private ChartList chart_data;
+    private final String symbol;
+    private final ChartList chart_data;
+    private final JsonObject quoteResponse;
 
     public Stock(String symbol) {
         this.symbol = symbol;
         this.chart_data = new ChartList(symbol);
+        this.quoteResponse = Responses.quoteResponse(symbol);
     }
 
     public String getSymbol() {
@@ -19,7 +18,7 @@ public class Stock {
     }
 
     public String getRegularMarketPrice()  {
-        JsonArray results = Responses.quoteResponse(symbol)
+        JsonArray results = quoteResponse
                 .getAsJsonObject("quoteResponse")
                 .getAsJsonArray("result");
 
@@ -27,7 +26,7 @@ public class Stock {
     }
 
     public String getRegularMarketHigh()  {
-        JsonArray results = Responses.quoteResponse(symbol)
+        JsonArray results = quoteResponse
                 .getAsJsonObject("quoteResponse")
                 .getAsJsonArray("result");
 
@@ -35,7 +34,7 @@ public class Stock {
     }
 
     public String getMarketCap()  {
-        JsonArray results = Responses.quoteResponse(symbol)
+        JsonArray results = quoteResponse
                 .getAsJsonObject("quoteResponse")
                 .getAsJsonArray("result");
 
@@ -43,7 +42,7 @@ public class Stock {
     }
 
     public String getPostMarketPrice()  {
-        JsonArray results = Responses.quoteResponse(symbol)
+        JsonArray results = quoteResponse
                 .getAsJsonObject("quoteResponse")
                 .getAsJsonArray("result");
 
@@ -51,7 +50,7 @@ public class Stock {
     }
 
     public String getRegularMarketOpen()  {
-        JsonArray results = Responses.quoteResponse(symbol)
+        JsonArray results = quoteResponse
                 .getAsJsonObject("quoteResponse")
                 .getAsJsonArray("result");
 
@@ -59,7 +58,7 @@ public class Stock {
     }
 
     public String getRegularMarketPrevClose()  {
-        JsonArray results = Responses.quoteResponse(symbol)
+        JsonArray results = quoteResponse
                 .getAsJsonObject("quoteResponse")
                 .getAsJsonArray("result");
 
@@ -67,7 +66,7 @@ public class Stock {
     }
 
     public String getPE()  {
-        JsonArray results = Responses.quoteResponse(symbol)
+        JsonArray results = quoteResponse
                 .getAsJsonObject("quoteResponse")
                 .getAsJsonArray("result");
 
@@ -77,8 +76,5 @@ public class Stock {
     public ChartList getChartList() {
         return chart_data;
     }
-
-
-
 
 }

@@ -20,7 +20,6 @@ public class CreateTimeSeries{
         ArrayList<Date> dates = ConvertJsonArray.convertDate(stock.getChartList().getDate());
         ArrayList<Double> adjclose = ConvertJsonArray.convertDouble(stock.getChartList().getAdjclose());
 
-        Day current = new Day();
         for(int i= 0; i < adjclose.size(); i++) {
             try {
                 series.add(new Day(dates.get(i)), adjclose.get(i));
