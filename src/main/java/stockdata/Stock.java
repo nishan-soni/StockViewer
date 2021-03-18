@@ -2,6 +2,7 @@ package stockdata;
 
 import com.google.gson.*;
 
+
 public class Stock {
     private final String symbol;
     private final ChartList chart_data;
@@ -33,20 +34,20 @@ public class Stock {
         return results.get(0).getAsJsonObject().get("regularMarketDayHigh").getAsString();
     }
 
+    public String getRegularMarketLow()  {
+        JsonArray results = quoteResponse
+                .getAsJsonObject("quoteResponse")
+                .getAsJsonArray("result");
+
+        return results.get(0).getAsJsonObject().get("regularMarketDayLow").getAsString();
+    }
+
     public String getMarketCap()  {
         JsonArray results = quoteResponse
                 .getAsJsonObject("quoteResponse")
                 .getAsJsonArray("result");
 
         return results.get(0).getAsJsonObject().get("marketCap").getAsString();
-    }
-
-    public String getPostMarketPrice()  {
-        JsonArray results = quoteResponse
-                .getAsJsonObject("quoteResponse")
-                .getAsJsonArray("result");
-
-        return results.get(0).getAsJsonObject().get("postMarketPrice").getAsString();
     }
 
     public String getRegularMarketOpen()  {
@@ -71,6 +72,22 @@ public class Stock {
                 .getAsJsonArray("result");
 
         return results.get(0).getAsJsonObject().get("trailingPE").getAsString();
+    }
+
+    public String getfiftHigh()  {
+        JsonArray results = quoteResponse
+                .getAsJsonObject("quoteResponse")
+                .getAsJsonArray("result");
+
+        return results.get(0).getAsJsonObject().get("fiftyTwoWeekHigh").getAsString();
+    }
+
+    public String getfiftLow()  {
+        JsonArray results = quoteResponse
+                .getAsJsonObject("quoteResponse")
+                .getAsJsonArray("result");
+
+        return results.get(0).getAsJsonObject().get("fiftyTwoWeekLow").getAsString();
     }
 
     public ChartList getChartList() {

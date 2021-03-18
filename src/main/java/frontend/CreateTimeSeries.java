@@ -30,9 +30,9 @@ public class CreateTimeSeries{
         }
 
         XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
-        renderer.setSeriesPaint(0, new Color(141,17,71));
+        renderer.setSeriesPaint(0, new Color(0,250,154));
         renderer.setSeriesShapesVisible(0, false);
-        renderer.setDefaultStroke(new BasicStroke(2.5f));
+        renderer.setDefaultStroke(new BasicStroke(1.5f));
         renderer.setAutoPopulateSeriesStroke(false);
 
         TimeSeriesCollection dataset = new TimeSeriesCollection(series);
@@ -45,7 +45,7 @@ public class CreateTimeSeries{
                 false,
                 false,
                 false);
-        chart.getPlot().setBackgroundPaint(new Color(25,28,38));
+        chart.getPlot().setBackgroundPaint(new Color(17,17,17));
         chart.getXYPlot().setRangeGridlinesVisible(false);
         chart.getXYPlot().setDomainGridlinesVisible(false);
         chart.getXYPlot().getRangeAxis().setVisible(false);
