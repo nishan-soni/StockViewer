@@ -115,9 +115,9 @@ public class App {
             try {
                 pe.setText("P/E ratio: " + df2.format(Double.parseDouble(stock.getPE())));
             }catch (NullPointerException exception) {
+                pe.setText("P/E ratio: ");
                 JOptionPane.showInternalMessageDialog(null, "Error: P/E ratio could " +
                         "not be loaded");
-                pe.setText("P/E ratio: ");
 
             }
 
