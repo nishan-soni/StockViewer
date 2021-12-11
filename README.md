@@ -1,3 +1,2 @@
 # StockViewer
-View data for stocks
-Made by Nishan Soni
+A simple Java application that displays a time series and other information for a stock.
