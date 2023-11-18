@@ -7,8 +7,8 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 public class Responses {
-    static String key1 ="2245c082b0msha8d407c6231cab9p1fb8d2jsnb195595cb891";
-    static String key2 = "dac7c7dd74mshe49901165576b0ap196957jsnc8c137fd45dc";
+    static String key1 ="";
+    static String key2 = "";
     public static JsonObject quoteResponse(String symbol) {
         HttpResponse<JsonNode> response = null;
         try {
